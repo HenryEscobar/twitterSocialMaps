@@ -5,7 +5,7 @@
 # Legal   : The MIT License (MIT)
 # File    :
 # Purpose : Iterate over barack Obama's followers and add them to my 
-#		Twitter cache
+#             Twitter cache
 # Notes   : Good test case. Testing ability to restart session state
 #
 ################################################################################
