@@ -4,8 +4,9 @@
 # email   : henry.escobar@gmail.com
 # Legal   : The MIT License (MIT)
 # File    :
-# Purpose :
+# Purpose : Iterate over my followers and add their friends of friends...
 # Notes   :
+#		Need to make recursive
 #
 ################################################################################
 #
@@ -13,10 +14,6 @@
 #
 
 require 'rubygems'
-require 'twitter'
-require 'redis'
-require 'json'
-
 require './twitterSocialMapsLib.rb'
 require "./key2.rb"
 

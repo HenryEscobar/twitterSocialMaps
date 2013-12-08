@@ -4,8 +4,9 @@
 # email   : henry.escobar@gmail.com
 # Legal   : The MIT License (MIT)
 # File    :
-# Purpose :
-# Notes   :
+# Purpose : Iterate over barack Obama's followers and add them to my 
+#		Twitter cache
+# Notes   : Good test case. Testing ability to restart session state
 #
 ################################################################################
 #
@@ -13,11 +14,8 @@
 #
 
 require 'rubygems'
-require 'twitter'
-require 'redis'
-require 'json'
-
 require './twitterSocialMapsLib.rb'
+# key file for twitter client
 require "./key1.rb"
 
 ################################################################################
@@ -33,7 +31,4 @@ require "./key1.rb"
    timeNow=Time.now.strftime("%d/%m/%Y %H:%M")
    $stderr.puts "\n-------------- Done: #{testID} @ #{timeNow}  ---------------"
    ret.printClass
-
-
-
 

@@ -16,3 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+# Don't advertise my oauth keys....
+key1.rb
+key2.rb

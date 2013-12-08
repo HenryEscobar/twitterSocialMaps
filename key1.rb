@@ -4,6 +4,7 @@
 # Twitter key info and config
 #
 ################################################################################
+xxx
 
 Twitter.configure do |config|
   config.consumer_key = 'XXXXXXXXXXXXXXXXXXXXXX'

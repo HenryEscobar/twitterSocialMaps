@@ -18,6 +18,7 @@
 #
 ################################################################################
 
+require 'rubygems'
 require 'redis'
 # CONFIG STUFF
 $redisBase="duality:twitter:users"

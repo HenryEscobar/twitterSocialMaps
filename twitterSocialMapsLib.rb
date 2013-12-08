@@ -4,8 +4,12 @@
 # email   : henry.escobar@gmail.com
 # Legal   : The MIT License (MIT)
 # File    :
-# Purpose :
+# Purpose : Library to poll twitter and add to short/long term storage
 # Notes   :
+# Todo    :
+#       Write stuff to postgres since too much data for redis.
+#       i.e. Abusing redis too much
+#		
 #
 ################################################################################
 #
@@ -26,12 +30,10 @@ require './twitterSocialMapsConfig.rb'
 
 ############################################################################### 
 #
-# Notes: This should become an object.
-#
-# workerName 	:= { host:filename:pid || hardcoded:pid? }
-# status 	:= { working, done }
+# workerName      := { host:filename:pid || hardcoded:pid? }
+# status          := { working, done }
 # workerHeartBeat := { ctime+30 min }
-# lastwrite	:= ctime of last write
+# lastwrite       := ctime of last write
 
 class TwitterFriends 
 
@@ -43,18 +45,18 @@ class TwitterFriends
 
        #logMessage("working on #{screen_name}")
 
-       @screen_name	= screen_name
-       @status		= "ready"	#-> ready|wip|done
-       @statuses_count	= -1
-       @heartbeat	= -1
-       @startTime	= -1
-       @stopTime	= -1
-       @lastwrite	= -1
-       @cacheExpire	= -1
-       @lastAccess	= -1
-       @accessCount	= -1
-       @createDate	= Time.new.getutc.to_i
-       @followers_count	= -1
+       @screen_name     = screen_name
+       @status          = "ready"     #-> ready|wip|done
+       @statuses_count  = -1
+       @heartbeat       = -1
+       @startTime       = -1
+       @stopTime     = -1
+       @lastwrite     = -1
+       @cacheExpire     = -1
+       @lastAccess     = -1
+       @accessCount     = -1
+       @createDate     = Time.new.getutc.to_i
+       @followers_count     = -1
        @friend_count	= -1
        @listed_count	= -1
        @verified	= -1

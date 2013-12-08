@@ -13,10 +13,6 @@
 #
 
 require 'rubygems'
-require 'twitter'
-require 'redis'
-require 'json'
-
 require './twitterSocialMapsLib.rb'
 require "./key2.rb"
 
