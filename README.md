@@ -1,7 +1,13 @@
 twitterSocialMaps
 =================
 
-Personal expermential project to play with a range of tools
+ - Personal expermential project to play with a range of tools
+
+ - Mimic this project against my twitter followers to a depth of 3:
+    - https://github.com/kjhealy/revere
+
+Play chest
+----------
 
 Play with:
  - [X] Ruby
@@ -11,5 +17,3 @@ Play with:
  - [ ] Social Network Theory (via R) and Link in references.md
  - [ ] Others?
 
-
-Play with ruby, Twitter API, Redis, postgres, and R looking for my Paul Revere http://kieranhealy.org/blog/archives/2013/06/09/using-metadata-to-find-paul-revere/
