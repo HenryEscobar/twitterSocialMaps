@@ -3,6 +3,12 @@ REFERENCES
 
 Useful links that helped me on this project
 
+Intent
+------
+
+ - Mimic this project against my twitter followers to a depth of 3:
+    - https://github.com/kjhealy/revere
+
 List of links
 -------------
 
@@ -14,3 +20,6 @@ Really good kickstarter:
 
 How to deal with twitter client errors (example)
 - http://stackoverflow.com/questions/16618037/twitter-rate-limit-hit-while-requesting-friends-with-ruby-gem
+
+
+
