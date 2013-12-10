@@ -31,7 +31,7 @@ require './twitterSocialMapsConfig.rb'
 ############################################################################### 
 #
 # workerName      := { host:filename:pid || hardcoded:pid? }
-# status          := { working, done }
+# status          := { wip, ready, done }
 # workerHeartBeat := { ctime+30 min }
 # lastwrite       := ctime of last write
 
@@ -68,6 +68,42 @@ class TwitterFriends
 
        initUserID(options)
    end #def initilize
+
+   ###########################################################################
+
+   def setScreen_Name(name)
+       @screen_name=name
+   end
+
+   def setFollowers_Count(count)
+       @followers_count=count
+   end
+
+   def setFriend_Count(count)
+       @friend_count=count
+       if (count == 0 ) 
+          @ffRation=count
+       else
+	  #possible error if @follower_count not set.
+          if ( @followers_count < 0 ) 
+             logMessage("ASSERT: @followers_count < 0")
+             exit 1
+          end
+          @ffRation=@followers_count/@friend_count 
+       end
+   end
+
+   def setListed_Count(count)
+       @listed_count=count
+   end
+
+   def setVerified(boolean)
+       @verified=boolean
+   end
+
+   def setStatuses_Count(count)
+       @statuses_count=count
+   end
 
    ###########################################################################
    def exportJson
@@ -166,18 +202,18 @@ class TwitterFriends
           printf "\t\t stopTime    : <NA> may be running\n"
        end
 
-       oneTime=Time.at(@createDate).strftime("%m/%d/%Y %H:%M")
-       twoTime=Time.at(@heartbeat).strftime("%m/%d/%Y %H:%M")
-       printf "\tcreateDate  : %s \t\t heartbeat   : %s\n",oneTime,twoTime
+       leftTime=Time.at(@createDate).strftime("%m/%d/%Y %H:%M")
+       rightTime=Time.at(@heartbeat).strftime("%m/%d/%Y %H:%M")
+       printf "\tcreateDate  : %s \t\t heartbeat   : %s\n",leftTime,rightTime
 
-       oneTime=Time.at(@lastAccess).strftime("%m/%d/%Y %H:%M")
-       twoTime=Time.at(@lastwrite).strftime("%m/%d/%Y %H:%M")
-       printf "\tlastAccess  : %s \t\t lastwrite   : %s\n",oneTime,twoTime
+       leftTime=Time.at(@lastAccess).strftime("%m/%d/%Y %H:%M")
+       rightTime=Time.at(@lastwrite).strftime("%m/%d/%Y %H:%M")
+       printf "\tlastAccess  : %s \t\t lastwrite   : %s\n",leftTime,rightTime
 
        printf "\n"
        printf "\tfriends.size           : %i\n", @friends.size
-       oneTime=@heartbeat - Time.new.getutc.to_i
-       printf "\theartbeat reaming time : %i\n",oneTime
+       leftTime=@heartbeat - Time.new.getutc.to_i
+       printf "\theartbeat reaming time : %i\n",leftTime
 
    end # printFriendHash
 
@@ -338,33 +374,20 @@ class TwitterFriends
     end # def pollTwitter(twiterHash)
 
    ###########################################################################
-   #
-   # is instance_variable_set bad form???
-   #
-   #    THESE NEED TO BE SET BY METHODS!!!!
-   #
+
    def processTwitterUser(twitterUser)
        friend=TwitterFriends.new(twitterUser.screen_name,pollTwitter: false)
-       friend.instance_variable_set("@screen_name",twitterUser.screen_name)
-       friend.instance_variable_set("@followers_count",
-              twitterUser.followers_count)
-       friend.instance_variable_set("@friend_count",twitterUser.friend_count)
-       friend.instance_variable_set("@listed_count",twitterUser.listed_count)
-       friend.instance_variable_set("@verified",twitterUser.verified)
-    
-       if (twitterUser.friend_count == 0 ) 
-          friend.instance_variable_set("@ffRation",twitterUser.followers_count)
-       else
-          friend.instance_variable_set("@ffRation",
-                 twitterUser.followers_count/twitterUser.friend_count )
-       end
 
-       friend.instance_variable_set("@statuses_count",
-              twitterUser.statuses_count)
+       friend.setScreen_Name(twitterUser.screen_name)
+       
+       setFollowers_Count(twitterUser.followers_count)
+       setFriend_Count(twitterUser.friend_count)
+       setListed_Count(twitterUser.listed_count)
+       setVerified(twitterUser.verified)
+       setStatuses_Count(twitterUser.statuses_count)
 
        #friend.printClass
        friend.writeCache
-
    end # processTwitterUser
 
 end # class TwitterFriends 
