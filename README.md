@@ -1,6 +1,8 @@
 twitterSocialMaps
 =================
 
+** Development paused since I hit a twitter ACL limit **
+
  - Personal expermential project to play with a range of tools
 
  - Mimic this project against my twitter followers to a depth of 3:
