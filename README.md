@@ -19,3 +19,8 @@ Play with:
  - [ ] Social Network Theory (via R) and Link in references.md
  - [ ] Others?
 
+
+
+My API key got blocked by twitter since this may be considered abuse. 
+
+need to revisit the design.
